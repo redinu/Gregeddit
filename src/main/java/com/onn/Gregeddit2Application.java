@@ -8,5 +8,6 @@ public class Gregeddit2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Gregeddit2Application.class, args);
+		
 	}
 }
