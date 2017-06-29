@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title>gregeddit</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+<body>
+	<ul th:each="link : ${links}"> 
+	<li>
+		<a target="_blank" th:href="@{${link.link}}" th:text="${link.title}"></a> <br/>
+		<p th:text="${link.date}"></p>
+		<p th:text="${link.fullName}"></p> </li>
+	</ul>
+	
+</body>
+</html>
