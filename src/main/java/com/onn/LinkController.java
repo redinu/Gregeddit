@@ -1,6 +1,12 @@
 package com.onn;
 
 
+import java.security.Principal;
+
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +27,10 @@ public class LinkController {
 		return "mainForm";
 	}
 	@RequestMapping(path ="/saveLink", method= RequestMethod.POST)
-	public String saveLink(@ModelAttribute Links link , Model model) {
+	public String saveLink(@ModelAttribute Links link ,Principal principal, Model model) {
+		
+		link.setDate( new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()) );
+		link.setFullName(principal.getName());
 		linksRepository.save(link);
 		Iterable<Links> l = linksRepository.findAll();
 		model.addAttribute("links", l);
